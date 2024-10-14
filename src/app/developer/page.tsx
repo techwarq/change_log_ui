@@ -10,12 +10,23 @@ interface Repo {
   default_branch: string;
 }
 
+interface Commit {
+  sha: string;
+  commit: {
+    message: string;
+    author: {
+      name: string;
+      date: string;
+    };
+  };
+}
+
 const DeveloperPage: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [repos, setRepos] = useState<Repo[]>([]);
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-  const [commits, setCommits] = useState<Array<any>>([]);
+  const [commits, setCommits] = useState<Commit[]>([]);
   const [summary, setSummary] = useState<string | null>(null);
 
   const API_URL = 'https://change-log-app.vercel.app';
@@ -32,7 +43,7 @@ const DeveloperPage: React.FC = () => {
 
   const fetchRepos = async (userId: string) => {
     try {
-      const response = await axios.get(`${API_URL}/dashboard?userId=${userId}`);
+      const response = await axios.get<Repo[]>(`${API_URL}/dashboard?userId=${userId}`);
       setRepos(response.data);
     } catch (error) {
       console.error('Error fetching repositories:', error);
@@ -42,10 +53,10 @@ const DeveloperPage: React.FC = () => {
   const handleRepoSelect = async (repoFullName: string) => {
     setSelectedRepo(repoFullName);
     try {
-      const commitsResponse = await axios.get(`${API_URL}/api/dashboard/commits/${repoFullName}?userId=${userId}`);
+      const commitsResponse = await axios.get<Commit[]>(`${API_URL}/api/dashboard/commits/${repoFullName}?userId=${userId}`);
       setCommits(commitsResponse.data);
 
-      const summaryResponse = await axios.get(`${API_URL}/api/dashboard/summarize/${repoFullName}?userId=${userId}`);
+      const summaryResponse = await axios.get<string>(`${API_URL}/api/dashboard/summarize/${repoFullName}?userId=${userId}`);
       setSummary(summaryResponse.data);
     } catch (error) {
       console.error('Error fetching commit data:', error);
