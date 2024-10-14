@@ -17,10 +17,10 @@ export default function Hero() {
                     <form className="relative h-fit rounded-full w-full max-w-2xl mx-auto">
                         <input
                             className="w-full bg-white/10 border border-white/25 text-white placeholder-white/50 rounded-full px-6 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-                            placeholder="Enter your repository URL..."
+                            placeholder="Enter a repo URL..."
                         />
                         <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 flex items-center justify-center">
-                            Generate <ArrowRight className="ml-2 h-5 w-5" />
+                            Generate <ArrowRight className="ml-2 h-3 w-3" />
                         </button>
                     </form>
                     
