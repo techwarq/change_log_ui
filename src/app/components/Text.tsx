@@ -3,24 +3,24 @@ import { Compare } from "./ui/compare";
 
 export default function Text() {
   return (
-    <section className=" text-white min-h-screen flex flex-col items-center justify-center p-4">
+    <section className="text-white min-h-screen flex flex-col items-center justify-center p-4">
       <div className="max-w-7xl mx-auto text-center mb-8">
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
-          Empower Your Objectives
+          Merges to Masterpieces
         </h1>
         <p className="text-xl text-gray-300 mb-8">
-          Dont just ask questions. Let AI break down complex goals into actionable tasks and execute them autonomously.
+          TRACK analyzes your merges and closed PRs, then uses AI to craft clear, concise, and compelling changelogs. Turn your development history into user-friendly updates in seconds.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 flex items-center justify-center">
-            Get Started <ArrowRight className="ml-2 h-5 w-5" />
+            Start Tracking <ArrowRight className="ml-2 h-5 w-5" />
           </button>
           <button className="bg-transparent border border-gray-400 hover:border-white text-white font-bold py-3 px-6 rounded-full transition duration-300">
-            Learn More
+            View Samples
           </button>
         </div>
       </div>
-       
+      
       <div className="w-full max-w-4xl h-[60vh] px-1 md:px-8 flex items-center justify-center [perspective:1200px] [transform-style:preserve-3d]">
         <div
           style={{
