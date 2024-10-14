@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -29,11 +30,13 @@ const DeveloperPage: React.FC = () => {
   const [commits, setCommits] = useState<Commit[]>([]);
   const [summary, setSummary] = useState<string | null>(null);
 
+  // Updated backend URL
   const API_URL = 'https://change-log-app.vercel.app';
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const userIdParam = params.get('userId');
+
     if (userIdParam) {
       setUserId(userIdParam);
       setIsAuthenticated(true);
@@ -64,9 +67,11 @@ const DeveloperPage: React.FC = () => {
   };
 
   const handleAuth = () => {
-    window.location.href = `${API_URL}/auth`;
+    // Redirecting to the backend auth URL
+    window.location.href = `${API_URL}/auth?redirect_uri=${encodeURIComponent(window.location.href)}`;
   };
 
+  // Handle the authentication state
   if (!isAuthenticated) {
     return (
       <div className="container mx-auto p-4">
