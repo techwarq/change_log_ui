@@ -88,7 +88,7 @@ const User: React.FC = () => {
   }
 
   return (
-    <main className="bg-gray-900 min-h-screen p-8">
+    <main className=" min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-white">Projects</h1>
