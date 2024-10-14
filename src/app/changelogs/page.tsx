@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { Card, CardContent, CardTitle } from "../components/ui/card";
@@ -104,4 +104,10 @@ const ChangelogPage: React.FC = () => {
   );
 };
 
-export default ChangelogPage;
+export default function SuspenseWrapper() {
+    return (
+      <Suspense fallback={<div className="text-white text-center mt-8">Loading page...</div>}>
+        <ChangelogPage />
+      </Suspense>
+    );
+  }
