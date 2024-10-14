@@ -25,9 +25,11 @@ export default function Hero() {
                     </form>
                     
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                        <Link href='/developer'>
                         <button className="bg-transparent border border-white/20 hover:border-white text-white font-bold py-3 px-8 rounded-full text-lg transition-all">
                             For Developers
                         </button>
+                        </Link>
                         <Link href='/user'>
                         <button className="bg-transparent border border-white/20 hover:border-white text-white font-bold py-3 px-8 rounded-full text-lg transition-all">
                             For Users
