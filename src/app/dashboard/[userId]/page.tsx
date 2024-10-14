@@ -32,7 +32,6 @@ const DeveloperPage: React.FC = () => {
       setRepos(response.data);
     } catch (error) {
       console.error('Error fetching repositories:', error);
-      // Handle specific error messages based on the response
       if (axios.isAxiosError(error) && error.response) {
         setError(error.response.data.error || 'Failed to fetch repositories. Please try again later.');
       } else {
@@ -44,6 +43,7 @@ const DeveloperPage: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Developer Dashboard</h1>
+      {userId && <p className="text-sm text-gray-500">User ID: {userId}</p>}
       {error && <p className="text-red-500">{error}</p>}
       {repos.length === 0 && !error ? (
         <p className="text-gray-500">No repositories found for this user.</p>
