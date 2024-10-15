@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router'; // Import useRouter
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '../components/ui/badge';
+
 
 const API_URL = 'https://change-log-app.vercel.app'; // Update this to your actual backend URL
 
@@ -16,18 +16,13 @@ interface Repo {
   default_branch: string;
 }
 
-interface SummaryItem {
-  name: string;
-  description: string;
-  tags: string[];
-}
+
 
 export default function Dashboard() {
   const [repos, setRepos] = useState<Repo[]>([]);
-  const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-  const [summaryItems, setSummaryItems] = useState<SummaryItem[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
+  const router = useRouter(); // Initialize router
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -55,24 +50,13 @@ export default function Dashboard() {
     }
   };
 
-  const handleRepoSelect = async (repoFullName: string) => {
-    setSelectedRepo(repoFullName);
+  const handleRepoSelect = (repoFullName: string) => {
     if (!userId) {
       setError('No userId available. Please refresh the page or re-authenticate.');
       return;
     }
-    try {
-      const summaryResponse = await axios.get<SummaryItem[]>(`${API_URL}/api/dashboard/summarize/${repoFullName}`, {
-        params: { userId },
-        withCredentials: true
-      });
-      setSummaryItems(summaryResponse.data);
-      setError(null);
-    } catch (error) {
-      console.error('Error fetching summary data:', error);
-      setError('Failed to fetch summary data. Please try again later.');
-      setSummaryItems([]);
-    }
+    // Navigate to the new route with selected repo
+    router.push(`/dashboard/devlogs?repo=${encodeURIComponent(repoFullName)}&userId=${encodeURIComponent(userId)}`);
   };
 
   return (
@@ -99,35 +83,6 @@ export default function Dashboard() {
         </div>
       ) : (
         <p>No repositories found. Please check your connection and try again.</p>
-      )}
-      {selectedRepo && summaryItems.length > 0 && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Summary for {selectedRepo}</h2>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Description</TableHead>
-                <TableHead>Tags</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {summaryItems.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell className="font-medium">{item.name}</TableCell>
-                  <TableCell>{item.description}</TableCell>
-                  <TableCell>
-                    {item.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary" className="mr-1 mb-1">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
       )}
     </main>
   );
