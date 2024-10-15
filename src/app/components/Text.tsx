@@ -34,7 +34,9 @@ export default function Text() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          TRACK analyzes your merges and closed PRs, then uses AI to craft clear, concise, and compelling changelogs. Turn your development history into user-friendly updates in seconds.
+          TRACK analyzes your merges and closed PRs, 
+          then uses AI to craft clear, concise, 
+          and compelling changelogs. Turn your development history into user-friendly updates in seconds.
         </motion.p>
         
         <motion.div 
@@ -54,9 +56,9 @@ export default function Text() {
               </motion.button>
             </DialogTrigger>
             
-            <DialogContent>
+            <DialogContent className="bg-black">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold">
+                <DialogTitle className="text-2xl text-white font-bold">
                   How do you want to browse?
                 </DialogTitle>
               </DialogHeader>

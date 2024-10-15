@@ -137,7 +137,7 @@ export default function Hero() {
                                 whileHover={{ scale: 1.05, borderColor: "white" }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                For Users
+                                For Public Users
                             </motion.button>
                         </Link>
                     </motion.div>
