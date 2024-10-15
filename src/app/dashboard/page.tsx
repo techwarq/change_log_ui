@@ -76,7 +76,7 @@ export default function Dashboard() {
                 <CardTitle className='text-white'>{repo.name}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">Default branch: {repo.default_branch}</p>
+                <p className="text-sm text-white">Default branch: {repo.default_branch}</p>
               </CardContent>
             </Card>
           ))}

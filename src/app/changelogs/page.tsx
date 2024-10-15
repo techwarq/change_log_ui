@@ -68,19 +68,19 @@ const ChangelogPage: React.FC = () => {
         <h1 className="text-4xl font-mono font-bold text-white mb-4">Changelogs of <span className='text-blue-500'>{repo}</span></h1>
         {changelogs.map((changelog, index) => (
           <Card key={index} className="flex items-start justify-start pt-3 mb-4 bg-gray-700 text-white border-gray-700 rounded-lg shadow-lg overflow-hidden">
-            <div className="ml-3 flex flex-col items-center justify-center text-muted-foreground">
+            <div className="ml-3 flex flex-col items-center justify-center ">
               
             </div>
             <div className="flex grow flex-col justify-between">
               <div className="flex items-start p-3 py-0">
-                <div className="flex grow flex-wrap items-center gap-x-2 pb-1">
+                <div className="flex grow flex-wrap items-center text-white  gap-x-2 pb-1">
                   <CardTitle className="text-xl font-bold text-foreground">
                     {changelog.name}
                   </CardTitle>
                 </div>
               </div>
               <CardContent className="p-3 pt-0">
-                <p className="mb-2 text-md text-cyan-800">{changelog.description}</p>
+                <p className="mb-2 text-md text-cyan-600">{changelog.description}</p>
                 <div className="flex flex-wrap items-center gap-2 mt-2">
                   {changelog.tags.map((tag, tagIndex) => (
                     <Badge 
