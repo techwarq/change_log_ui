@@ -28,7 +28,7 @@ const badgeColors = [
 function DevlogsContent() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
-  const repoFullName = searchParams.get('repoFullName');
+  const repo = searchParams.get('repo');  // Updated to fetch 'repo' instead of 'repoFullName'
   
   const [commitSummaries, setCommitSummaries] = useState<CommitSummary[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,8 +36,8 @@ function DevlogsContent() {
 
   useEffect(() => {
     const fetchAndSummarizeCommits = async () => {
-      if (!userId || !repoFullName) {
-        setError('Missing userId or repoFullName');
+      if (!userId || !repo) {
+        setError('Missing userId or repo');
         setLoading(false);
         return;
       }
@@ -47,13 +47,13 @@ function DevlogsContent() {
         
         // Step 1: Fetch and save raw commits
         console.log('Fetching and saving commits...');
-        await axios.get(`${API_BASE_URL}/dashboard/commits/${repoFullName}`, {
+        await axios.get(`${API_BASE_URL}/dashboard/commits/${repo}`, {  // Using 'repo'
           params: { userId }
         });
         
         // Step 2: Fetch summarized commits
         console.log('Fetching summarized commits...');
-        const summaryResponse = await axios.get(`${API_BASE_URL}/dashboard/summarize/${repoFullName}`, {
+        const summaryResponse = await axios.get(`${API_BASE_URL}/dashboard/summarize/${repo}`, {  // Using 'repo'
           params: { userId }
         });
         
@@ -68,7 +68,7 @@ function DevlogsContent() {
     };
 
     fetchAndSummarizeCommits();
-  }, [userId, repoFullName]);
+  }, [userId, repo]);  // Updated to depend on 'repo'
 
   if (loading) {
     return <div className="text-white text-center mt-8">Fetching and summarizing commits...</div>;
@@ -81,7 +81,7 @@ function DevlogsContent() {
   return (
     <main className="text-white min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-mono font-bold text-white mb-4">Commit Summaries for <span className='text-blue-500'>{repoFullName}</span></h1>
+        <h1 className="text-4xl font-mono font-bold text-white mb-4">Commit Summaries for <span className='text-blue-500'>{repo}</span></h1>  {/* Updated to display 'repo' */}
         {commitSummaries.map((summary, index) => (
           <Card key={index} className="flex items-start justify-start pt-3 mb-4 bg-gray-800 text-white border-gray-700 rounded-lg shadow-lg overflow-hidden">
             <div className="flex grow flex-col justify-between">
