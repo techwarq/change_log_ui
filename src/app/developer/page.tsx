@@ -37,7 +37,7 @@ const DeveloperPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://change-log-app.vercel.app';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://change-log-ui.vercel.app';
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -19,7 +19,7 @@ interface AuthInfo {
   accessToken: string;
 }
 
-export default function DashboardPage() {
+function DashboardPageContent() {
   const [authInfo, setAuthInfo] = useState<AuthInfo | null>(null);
   const [repos, setRepos] = useState<Repo[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -101,5 +101,13 @@ export default function DashboardPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading dashboard...</div>}>
+      <DashboardPageContent />
+    </Suspense>
   );
 }
