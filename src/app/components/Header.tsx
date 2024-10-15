@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="supports-backdrop-blur:bg-background/60 bg-background sticky top-0 z-50 w-full backdrop-blur">
+        <header className=" sticky top-0 z-50 w-full backdrop-blur">
             <div className="container relative flex h-16 w-full items-center justify-between px-4 md:px-8">
                 {/* Brand Name */}
                 <Link href="/" className="text-2xl font-mono font-bold text-white">
