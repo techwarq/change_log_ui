@@ -1,5 +1,6 @@
-"use client"
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { Card, CardContent, CardTitle } from "../../components/ui/card";
@@ -24,7 +25,7 @@ const badgeColors = [
   'bg-indigo-500',
 ];
 
-export default function Devlogs() {
+function DevlogsContent() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
   const repoFullName = searchParams.get('repoFullName');
@@ -113,5 +114,13 @@ export default function Devlogs() {
         ))}
       </div>
     </main>
+  );
+}
+
+export default function Devlogs() {
+  return (
+    <Suspense fallback={<div className="text-white text-center mt-8">Loading...</div>}>
+      <DevlogsContent />
+    </Suspense>
   );
 }
