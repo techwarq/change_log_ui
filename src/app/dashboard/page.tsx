@@ -71,9 +71,9 @@ export default function Dashboard() {
       {repos.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           {repos.map((repo) => (
-            <Card key={repo.id} className="cursor-pointer bg-gray-800" onClick={() => handleRepoSelect(repo.full_name)}>
+            <Card key={repo.id} className="cursor-pointer bg-gray-700 border-gray-700" onClick={() => handleRepoSelect(repo.full_name)}>
               <CardHeader>
-                <CardTitle>{repo.name}</CardTitle>
+                <CardTitle className='text-white'>{repo.name}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600">Default branch: {repo.default_branch}</p>

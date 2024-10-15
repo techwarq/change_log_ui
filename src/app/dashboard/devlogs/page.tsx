@@ -108,11 +108,11 @@ function DevlogsContent() {
           <p className="text-yellow-500">No commit summaries found. This could be due to an empty repository or an issue with the summarization process.</p>
         ) : (
           commitSummaries.map((summary, index) => (
-            <Card key={index} className="flex items-start justify-start pt-3 mb-4 bg-gray-800 text-white border-gray-700 rounded-lg shadow-lg overflow-hidden">
+            <Card key={index} className="flex items-start justify-start pt-3 mb-4 bg-gray-700 border-gray-700 text-white border-gray-700 rounded-lg shadow-lg overflow-hidden">
               <div className="flex grow flex-col justify-between">
                 <div className="flex items-start p-3 py-0">
                   <div className="flex grow flex-wrap items-center gap-x-2 pb-1">
-                    <CardTitle className="text-xl font-bold text-foreground">
+                    <CardTitle className="text-xl font-bold text-foreground text-white">
                       {summary.name}
                     </CardTitle>
                   </div>
