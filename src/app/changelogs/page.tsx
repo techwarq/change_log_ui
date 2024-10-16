@@ -55,7 +55,15 @@ const ChangelogPage: React.FC = () => {
   }, [owner, repo]);
 
   if (loading) {
-    return <div className="text-white text-center mt-8">Loading changelogs...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img
+          src="assets/Bat Png.png" // Update this with the correct path to your bat image
+          alt="Loading Bat"
+          className=" w-32 h-32 animate-spinner transform-gpu"
+        />
+      </div>
+    );
   }
 
   if (error) {

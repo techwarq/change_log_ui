@@ -80,9 +80,16 @@ const User: React.FC = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-white text-center mt-8">Loading projects...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img
+          src="assets/Bat Png.png" // Update this with the correct path to your bat image
+          alt="Loading Bat"
+          className=" w-32 h-32 animate-spinner transform-gpu"
+        />
+      </div>
+    );
   }
-
   if (error) {
     return <div className="text-red-500 text-center mt-8">{error}</div>;
   }

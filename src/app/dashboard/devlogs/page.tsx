@@ -7,6 +7,7 @@ import { Card, CardContent, CardTitle } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { cn } from "@/lib/utils";
 
+
 const API_BASE_URL = 'https://change-log-app.vercel.app'; // Ensure this is correct
 
 interface CommitSummary {
@@ -82,7 +83,15 @@ function DevlogsContent() {
   }, [userId, repo]);
 
   if (loading) {
-    return <div className="text-white text-center mt-8">Fetching and summarizing commits...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img
+          src="assets/Bat Png.png" // Update this with the correct path to your bat image
+          alt="Loading Bat"
+          className=" w-32 h-32 animate-spinner transform-gpu"
+        />
+      </div>
+    );
   }
 
   if (error) {
