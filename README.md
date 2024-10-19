@@ -36,7 +36,7 @@ To improve the performance of API fetching, I plan to implement parallel process
 - **AI Model**: Llama 3.1-70B-Versatile (using GROQ Cloud)
 - **Database**: PostgreSQL
 - **Caching**: Redis for API performance optimization.
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS, Shadcn Ui, Acternity Ui
 
 ## Architecture and Technical Decisions
 
@@ -115,9 +115,7 @@ I chose Prisma for database management due to its powerful type-safe ORM capabil
 │   └── index.ts
 └── lib
     └── utils.ts
-### Steps
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/TRACK.git
+
+
    
